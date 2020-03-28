@@ -1,20 +1,23 @@
 <template>
-  <header class="bg-theme">
-    <div class="wrap-header zerogrid">
-      <div class="row">
-        <div id="cssmenu">
+      <div class="nav clearfix">
+        <div class="menu">
           <ul>
-            <li class="active">
-              <router-link to="/home" target="a">Home</router-link>
+            <li>
+              <router-link to="/home">HOME</router-link>
+            </li>
+            <li class="products">
+              <router-link to="/Featured" >PRODUCTS</router-link>
+              <ul class="pro-classify">
+                <li><router-link to="/Featured" target="a">FEATURED MATERIAL</router-link></li>
+                <li><router-link to="/HotSale" target="a">HOT SALE</router-link></li>
+                <li><router-link to="/SalesPromotion" target="a">SALES PROMOTION</router-link></li>
+              </ul>
             </li>
             <li>
-              <router-link to="/Featured" target="a">Products</router-link>
+              <router-link to="/About" >ABOUT</router-link>
             </li>
             <li>
-              <router-link to="/About" target="a">About</router-link>
-            </li>
-            <li>
-              <router-link to="/contact" target="a">contact</router-link>
+              <router-link to="/contact">CONTACT</router-link>
             </li>
           </ul>
         </div>
@@ -25,28 +28,59 @@
           <span style="vertical-align: middle;margin-left:20px;color:#fff;font-size:24px;">名邦贸易</span>
         </div>
       </div>
-    </div>
-  </header>
+   
 </template>
 <script>
 export default {};
 </script>
 
 <style scoped>
-header .logo {
+.nav {
+  background-color: #2d88cf;
+  
+}
+.menu {
+  float: right;
+  margin-right: 30px;
+}
+.menu ul li {
+  float: left;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
+}
+.menu ul li:hover {
+  background-color: #001E35;
+}
+.menu ul li a {
+  color: #fff;
+}
+ .logo {
   white-space: nowrap;
 }
-header .logo img {
+ .logo img {
     display: inline-block;
     margin: auto;
     padding: 10px;
     max-width: 130px;
 }
-
-@media all and (max-width: 768px) {
-    
-    /* header .logo img {
-        display: block;
-    } */
+ .products {
+  position: relative;
+  
 }
+ .products .pro-classify {
+  background-color: #001E35;
+  font-size: 12px;
+  width: 200px;
+  
+  position: absolute;
+  left: 0;
+  top: 70px;
+  z-index: 1000;
+ display: none;
+}
+.products:hover .pro-classify{
+  display: block;
+}
+
 </style>

@@ -333,7 +333,7 @@ body {
     font: 14px/25px Arial, Helvetica, sans-serif;
     font-family: Montserrat, sans-serif;
     letter-spacing: 1px;
-    min-width: 1000px;
+     min-width: 1200px;
 }
 
 
@@ -438,7 +438,7 @@ article .info {
 
 
 .price {
-    color: #1db185;
+    color: #DA0505;
     font-size: 48px;
     line-height: 1;
     font-weight: bold;
@@ -890,7 +890,7 @@ Chrome */
 }
 
 #cssmenu {
-    z-index: 999;
+    
     float: right;
 }
 
@@ -926,70 +926,10 @@ Chrome */
 }
 
 #cssmenu>ul>li:hover>a {
-    background: #2672AD;
+    background: #001E35;
 }
 
-#cssmenu ul ul {
-    position: absolute;
-    left: -9999px;
-}
 
-#cssmenu.align-right ul ul {
-    text-align: right;
-}
-
-#cssmenu ul ul li {
-    height: 0;
-    -webkit-transition: all .25s ease;
-    -moz-transition: all .25s ease;
-    -ms-transition: all .25s ease;
-    -o-transition: all .25s ease;
-    transition: all .25s ease;
-}
-
-#cssmenu li:hover>ul {
-    left: auto;
-}
-
-#cssmenu.align-right li:hover>ul {
-    left: auto;
-    right: 0;
-}
-
-#cssmenu li:hover>ul>li {
-    height: 35px;
-}
-
-#cssmenu ul ul ul {
-    margin-left: 100%;
-    top: 0;
-}
-
-#cssmenu.align-right ul ul ul {
-    margin-left: 0;
-    margin-right: 100%;
-}
-
-#cssmenu ul ul li a {
-    border-bottom: 1px solid rgba(150, 150, 150, 0.15);
-    padding: 11px 15px;
-    width: 170px;
-    font-size: 12px;
-    text-decoration: none;
-    color: #dddddd;
-    font-weight: 400;
-    background: #3B3B3B;
-}
-
-#cssmenu ul ul li:last-child>a,
-#cssmenu ul ul li.last-item>a {
-    border-bottom: 0;
-}
-
-#cssmenu ul ul li:hover>a,
-#cssmenu ul ul li a:hover {
-    color: #ffffff;
-}
 
 @media all and (max-width: 768px),
 only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px),

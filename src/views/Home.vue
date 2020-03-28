@@ -48,18 +48,7 @@
               </select>
             </div>
           </div>
-          <!-- <div class="col-1-4">
-            <div class="wrap-col">
-              <span>Thickness :</span>
-              <br />
-              <select>
-                <option>--ALL--</option>
-                <option>0-1000</option>
-                <option>1000-5000</option>
-                <option>5000-10000</option>
-              </select>
-            </div>
-          </div>-->
+          
           <div class="col-1-6 inb">
             <div class="wrap-col">
               <br />
@@ -107,15 +96,14 @@
                 </div>
               </div>
 
-              <div class="more">MORE</div>
+              <div class="more"><router-link to="/Featured" target="a">MORE</router-link></div>
             </div>
           </div>
 
-<!--工厂环境-->
+          <!--工厂环境-->
           <div class="wrap-box t-center" style="background: #F7F7F7;">
-            
             <div class="factory_environment t-center" style="background: #F7F7F7;">
-              <el-carousel height="22vw" :interval="4000" arrow="never" type="card">
+              <el-carousel height="22vw" :interval="2000" arrow="never" indicator-position="none" type="card">
                 <el-carousel-item v-for="(item,index) in factoryImg" :key="index">
                   <img :src="item.img" />
                 </el-carousel-item>
@@ -123,62 +111,36 @@
             </div>
           </div>
 
-
-
-
-
-     
-          <div class="wrap-box">
-            <!--Start Box-->
-            <div class="zerogrid">
-              <div class="header" style="margin:50px 0">
-                <h2>HOT SALE</h2>
-              </div>
-
-              <div class="flex_waper">
-                <div v-for="(item) in 4" :key="item" class="item t-center" style="width: 48%; height:360px; margin-bottom: 1%; overflow: hidden; background:#F7F7F7">
-                  
-                        <div class="col-2-3">
-                          <div class="item-container">
-                            <a href="single.html">
-                              <div class="item-caption">
-                                <div class="item-caption-inner">
-                                  <div class="item-caption-inner1">
-                                    <span>
-                                      2006 / 32,000 km / 250 HP / petrol /
-                                      automatic / Sports car/Coupe / Beige
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                              <img src="../assets/images/car7.jpg" />
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-1-3" style="background:#F7F7F7">
-                          <div class="wrap-col">
-                            <div class="item-info">
-                              <a href="single.html">
-                                <h3>LAMBORGHINI GALLARDO</h3>
-                              </a>
-                              <p>32,000 km €78,400</p>
-                              <p>ABS, Leather seats, Power Assisted Steering, Electric heated seats, New HU and AU, Xenon headlights</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="clear"></div>
-                      
-                  
+          <div class="hot_sale">
+            <div class="top_title"><h2>HOT SALE</h2></div>
+            <div class="flex_hot_waper">
+              <div v-for="item in 10" :key="item" class="item">
+                <div class="left_box item-container">
+                  <div class="item-caption">
+                    <div class="item-caption-inner">
+                      <div class="item-caption-inner1">
+                        <span>
+                          2006 / 32,000 km / 250 HP / petrol /
+                          automatic / Sports car/Coupe / Beige
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <img src="../assets/images/car9.jpg" alt />
+                </div>
+                <div class="right_box">
+                  <div>
+                    <div class="title">LAMBORGHINI GALLARDO</div>
+                    <div class="price">$48,400</div>
+                  </div>
+                  <div
+                    class="worlds"
+                  >ABS, Auxiliary heating, Central locking, Cruise control, Electric heated</div>
                 </div>
               </div>
-
-              <div class="more">MORE</div>
             </div>
+            <div class="more"><router-link to="/HotSale" target="a">MORE</router-link></div>
           </div>
-
-
-
-
 
           <div class="wrap-box">
             <!--Start Box-->
@@ -207,8 +169,7 @@
                 </div>
               </div>
 
-              <div class="more">MORE</div>
-              
+              <div class="more"><router-link to="/SalesPromotion" target="a">MORE</router-link></div>
             </div>
           </div>
         </div>
@@ -250,6 +211,7 @@ export default {
 .swiper_img {
   width: 100vw;
   height: 41vw;
+  font-weight: bold;
 }
 
 .row .inb {
@@ -259,13 +221,13 @@ export default {
   display: flex;
   flex-wrap: wrap;
   /* justify-content: space-around; */
-  
 }
 .flex_waper .item {
   width: 32%;
-  margin:0 0 1%  1%;
+  margin: 0 0 1% 1%;
 }
 .more {
+  text-align: center;
   width: 120px;
   height: 36px;
   line-height: 36px;
@@ -274,16 +236,17 @@ export default {
   font-size: 16px;
   border-radius: 2px;
   margin: 30px auto 50px auto;
+  cursor: pointer;
 }
-
+.more a{
+  color: #fff;
+}
 .factory_environment {
   width: 90%;
   display: inline-block;
 }
 .promotion {
   position: relative;
-  /* width: 100%;
-  overflow: hidden; */
   margin-bottom: 3%;
 }
 .promotion img {
@@ -293,12 +256,168 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
-  /* right: 0; */
   width: 100%;
   height: 128px;
   line-height: 128px;
-  background-color: rgba(45,136,207,.3);
+  background-color: rgba(45, 136, 207, 0.3);
   color: #fff;
   font-size: 12px;
+}
+
+.hot_sale {
+  min-width: 1300px;
+}
+.top_title {
+  text-align: center;
+  
+  margin: 100px 0 50px;
+}
+.hot_sale .flex_hot_waper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hot_sale .flex_hot_waper .item {
+  width: 46%;
+  min-width: 600px;
+  /* height: 18.75vw; */
+  min-height: 300px;
+  margin: 0 0 2% 3%;
+  background-color: #f7f7f7;
+}
+
+.hot_sale .flex_hot_waper .item .left_box {
+  display: inline-block;
+  width: 65%;
+  /* padding: 20px; */
+
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.hot_sale .flex_hot_waper .item .left_box img {
+  width: 100%;
+  height: 16.66vw;
+  min-height: 300px;
+}
+
+.hot_sale .flex_hot_waper .item .item-container .item-caption {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  padding: 10px;
+  background: none;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.5s ease;
+  /* Safari and
+Chrome */
+  -moz-transition: all 0.5s ease;
+  /* Firefox */
+  -ms-transition: all 0.5s ease;
+  /* IE 9 */
+  -o-transition: all 0.5s ease;
+  /* Opera */
+  transition: all 0.5s ease;
+}
+
+.item .item-caption-inner {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.item .item-caption-inner1 {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.item-container .item-caption h3,
+.item-container .item-caption span {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  display: none;
+}
+
+.item-container .item-caption h3 {
+  font-size: 23px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.item-container .item-caption span {
+  font-style: italic;
+  font-size: 12px;
+}
+
+.item .item-container:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(32, 152, 209, 0.7);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.item:hover {
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.item:hover .item-container:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+}
+
+.item:hover .item-container .item-caption span {
+  display: block;
+}
+
+.right_box {
+  width: 35%;
+  height: 100%;
+  display: inline-flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.right_box .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.right_box .price {
+  font-size: 24px;
+  color: #333;
+  margin-top: 20px;
+}
+.right_box .worlds {
+  font-size: 14px;
+  color: #666;
+  padding: 0 20px;
 }
 </style>
