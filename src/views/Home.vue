@@ -48,7 +48,7 @@
               </select>
             </div>
           </div>
-          
+
           <div class="col-1-6 inb">
             <div class="wrap-col">
               <br />
@@ -73,7 +73,7 @@
               <div class="flex_waper">
                 <div v-for="(item) in 6" :key="item" class="item t-center">
                   <div class="item-container">
-                    <a href="single.html">
+                    <router-link :to="'/Product_detail'">
                       <div class="item-caption">
                         <div class="item-caption-inner">
                           <div class="item-caption-inner1">
@@ -85,7 +85,7 @@
                         </div>
                       </div>
                       <img src="../assets/images/car1.jpg" />
-                    </a>
+                    </router-link>
                   </div>
                   <div class="item-info">
                     <a href="single.html">
@@ -96,14 +96,25 @@
                 </div>
               </div>
 
-              <div class="more"><router-link to="/Featured" target="a">MORE</router-link></div>
+              <div class="more">
+                <router-link to="/Featured" target="a">
+                MORE
+                <i class="el-icon-d-arrow-right"></i>
+                </router-link>
+              </div>
             </div>
           </div>
 
           <!--工厂环境-->
           <div class="wrap-box t-center" style="background: #F7F7F7;">
             <div class="factory_environment t-center" style="background: #F7F7F7;">
-              <el-carousel height="22vw" :interval="2000" arrow="never" indicator-position="none" type="card">
+              <el-carousel
+                height="22vw"
+                :interval="2000"
+                arrow="never"
+                indicator-position="none"
+                type="card"
+              >
                 <el-carousel-item v-for="(item,index) in factoryImg" :key="index">
                   <img :src="item.img" />
                 </el-carousel-item>
@@ -112,7 +123,9 @@
           </div>
 
           <div class="hot_sale">
-            <div class="top_title"><h2>HOT SALE</h2></div>
+            <div class="top_title">
+              <h2>HOT SALE</h2>
+            </div>
             <div class="flex_hot_waper">
               <div v-for="item in 10" :key="item" class="item">
                 <div class="left_box item-container">
@@ -139,7 +152,12 @@
                 </div>
               </div>
             </div>
-            <div class="more"><router-link to="/HotSale" target="a">MORE</router-link></div>
+            <div class="more">
+              <router-link to="/HotSale" target="a">
+              MORE
+              <i class="el-icon-d-arrow-right"></i>
+              </router-link>
+            </div>
           </div>
 
           <div class="wrap-box">
@@ -169,7 +187,12 @@
                 </div>
               </div>
 
-              <div class="more"><router-link to="/SalesPromotion" target="a">MORE</router-link></div>
+              <div class="more">
+                <router-link to="/SalesPromotion" target="a">
+                  MORE
+                  <i class="el-icon-d-arrow-right"></i>
+                </router-link>
+              </div>
             </div>
           </div>
         </div>
@@ -238,7 +261,7 @@ export default {
   margin: 30px auto 50px auto;
   cursor: pointer;
 }
-.more a{
+.more a {
   color: #fff;
 }
 .factory_environment {
@@ -269,7 +292,7 @@ export default {
 }
 .top_title {
   text-align: center;
-  
+
   margin: 100px 0 50px;
 }
 .hot_sale .flex_hot_waper {

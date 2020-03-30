@@ -115,9 +115,28 @@
             </div>
           </div>
           <div class="col-1-3">
-            <div class="wrap-col" style="text-align: left; margin-left: 150px">
+            <div class="wrap-col" style="text-align: center;">
               <div class="header" style="margin-top: 150px">
                 <h5 style="color: #999">—— RECOMMENDATION ——</h5>
+              </div>
+              <div class="recommen">
+                <!--  -->
+                <div class="recommen_content" :style="'top:'+remcom_top+'px'">
+                  <div v-for="item in 6" :key="item" class="recommen_item">
+                  <img src="../assets/images/product-slide2.jpg" alt="">
+                  <div class="recomment_msk">
+                    $78,400
+                  </div>
+                </div>
+
+               
+
+                </div>
+              </div>
+
+              <div class="arow_icon">
+                <el-button @click="handleNext" class="el-icon-arrow-down"></el-button>
+                <el-button @click="handleBack" class="el-icon-arrow-up"></el-button>
               </div>
             </div>
           </div>
@@ -135,8 +154,17 @@ export default {
         { img: require("../assets/images/product-slide1.jpg") },
         { img: require("../assets/images/product-slide2.jpg") },
         { img: require("../assets/images/slideshow-image3.jpg") }
-      ]
+      ],
+      remcom_top: 0
     };
+  },
+  methods: {
+    handleNext() {
+      this.remcom_top -=280
+    },
+    handleBack() {
+      this.remcom_top +=280
+    }
   }
 };
 </script>
@@ -166,5 +194,51 @@ export default {
 }
 .product_img img {
   width: 100%;
+}
+
+.recommen {
+  width: 400px;
+  height: 1100px;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+}
+.recommen_content {
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+.recommen .recommen_item {
+  width: 400px;
+  overflow: hidden;
+  position: relative;
+ margin-bottom: 30px;
+}
+.recommen .recommen_item img {
+  width: 100%;
+  height: 250px;
+}
+.recomment_msk {
+  width: 100%;
+  height: 68px;
+  line-height: 68px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(45,136,207,.5);
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+}
+
+.arow_icon {
+  font-size: 40px;
+  color: #b7b4b8;
+  margin-top: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.arow_icon el-button:first-child{
+  margin-right: 70px;
 }
 </style>
