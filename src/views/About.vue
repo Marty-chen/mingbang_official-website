@@ -1,19 +1,40 @@
 <template>
   <div class="about">
     <div class="banner_img">
-      <img src="@/assets/images/slideshow-image2.jpg" alt="">
+      <img :src="list.introductionImg" alt="">
     </div>
-    <div class="title">Corporate name</div>
-    <div class="company">
-      This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  
+    <!-- <div class="title">{{list.name}}</div> -->
 
-This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  
+    <div class="ql-container ql-snow">
+      <div class="ql-editor">
+         <div v-html="list.introduction">{{list.introduction}}}</div>
+     </div>
+</div>
 
-This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  This is our company profile.  This is our company profile.  This is our company profile. This is our company profile.  
-
-    </div>
+    <!-- <div class="company" v-html="list.introduction"></div> -->
   </div>
 </template>
+
+<script>
+export default {
+   data() {
+    return {
+      list: ''
+    }
+  },
+   methods: {
+    //获取关于我们数据
+    async getHeaderFooter() {
+     const { data } = await this.$http.post("/api/usr/cor/detail.pub");
+     if(data.code !== "0000") return this.$message.error("请求数据失败")
+     this.list = data.data;
+    }
+  },
+  created() {
+    this.getHeaderFooter()
+  }
+}
+</script>
 
 <style scoped>
   .title {
@@ -23,6 +44,13 @@ This is our company profile. This is our company profile.  This is our company p
     margin: 80px;
   }
   .company {
-    padding: 0 100px;
+    padding: 0 30px;
+  }
+  .banner_img img {
+    width: 100%;
+  }
+  .ql-container.ql-snow {
+    border: none;
+    padding: 30px 80px;
   }
 </style>

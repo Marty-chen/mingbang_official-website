@@ -37,4 +37,15 @@
     width: 100%;
     overflow: hidden;
 }
+.flex_hot_waper {
+    cursor: pointer;
+  }
+.flex_waper {
+    cursor: pointer;
+}
+.pagination {
+    text-align: center;
+    margin: 30px 0;
+  }
 
+  

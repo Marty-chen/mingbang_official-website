@@ -3,16 +3,22 @@
     <div class="zerogrid">
       <div class="wrap-footer">
         <div class="row">
-          <h3>Contact</h3>
-          <div>Phone / +86 13694912906</div>
-          <div>Email / alex@ivanda-intl.com</div>
-          <div>No.1, Huan Gang Gong Shu Bei road, Houjie town, Dongguan city, Guangdong province, China</div>
-          <div>Copyright &copy; 2020.Company name All rights</div>
+          <h3>CONTACT</h3>
+          <div>PHONE / {{list.phone}}</div>
+          <div>EMAIL / {{list.email}}</div>
+          <div>{{list.address}}</div>
+          <div>COPYRIGHT &copy; 2020 {{list.copyright}} All RIGHTS</div>
         </div>
       </div>
     </div>
   </footer>
 </template>
+
+<script>
+export default {
+  props: ["list"]
+}
+</script>
 
 <style scoped>
 footer {

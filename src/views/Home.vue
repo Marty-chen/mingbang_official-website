@@ -8,53 +8,18 @@
 
     <div class="bg-theme">
       <div class="filter zerogrid">
-        <h2 class="t-center" style="margin: 70px 0;">FIND MATERIAL THAT YOU LOVE</h2>
-        <div class="row t-center">
-          <div class="col-1-3 inb">
-            <div class="wrap-col">
-              <span>Categories :</span>
-              <br />
-              <select>
-                <option>--ALL--</option>
-                <option>Honda</option>
-                <option>Infiniti</option>
-                <option>Jeep</option>
-                <option>Mercedes-Benz</option>
-                <option>Volvo</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-1-3 inb">
-            <div class="wrap-col">
-              <span>Texture :</span>
-              <br />
-              <select>
-                <option>--ALL--</option>
-                <option>Aston martin</option>
-                <option>Audi</option>
-                <option>Bentley</option>
-                <option>Bmw</option>
-                <option>Cadillac</option>
-                <option>Chevrolet</option>
-                <option>Citroen</option>
-                <option>Dacia</option>
-                <option>Dodge</option>
-                <option>Ferrari</option>
-                <option>Ford</option>
-                <option>Gmc</option>
-                <option>Hyundai</option>
-                <option>Jaguar</option>
-                <option>Lexus</option>
-              </select>
-            </div>
-          </div>
+        <h2 class="t-center" style="margin: 70px 0 30px 0;">FIND MATERIAL THAT YOU LOVE</h2>
+        <div class="searchBox">
+          <el-cascader
+            class="cascader"
+            placeholder="please choose"
+            clearable
+            :options="cascaderList"
+            :props="cascProps"
+            @change="handleChange"
+          ></el-cascader>
 
-          <div class="col-1-6 inb">
-            <div class="wrap-col">
-              <br />
-              <a href="#" class="button bt1">Search</a>
-            </div>
-          </div>
+          <el-button @click="handleSearch" class="el-icon-search"></el-button>
         </div>
       </div>
     </div>
@@ -71,35 +36,36 @@
               </div>
 
               <div class="flex_waper">
-                <div v-for="(item) in 6" :key="item" class="item t-center">
+                <div
+                  @click="toGdsDetail(item.gdsId)"
+                  v-for="item in featuredList"
+                  :key="item.img"
+                  class="item t-center"
+                >
                   <div class="item-container">
-                    <router-link :to="'/Product_detail'">
-                      <div class="item-caption">
-                        <div class="item-caption-inner">
-                          <div class="item-caption-inner1">
-                            <span>
-                              2006 / 32,000 km / 250 HP / petrol / automatic /
-                              Sports car/Coupe / Beige
-                            </span>
-                          </div>
+                    <div class="item-caption">
+                      <div class="item-caption-inner">
+                        <div class="item-caption-inner1">
+                          <span>{{item.gdsFeature}}</span>
                         </div>
                       </div>
-                      <img src="../assets/images/car1.jpg" />
-                    </router-link>
+                    </div>
+                    <img :src="item.img" />
                   </div>
                   <div class="item-info">
-                    <a href="single.html">
-                      <h3>LAMBORGHINI GALLARDO</h3>
-                    </a>
-                    <p>32,000 km €78,400</p>
+                    <h5 style="margin-bottom: 10px">${{item.price}}</h5>
+                    <h3>{{item.name}}</h3>
                   </div>
+                </div>
+                <div v-if="!featuredList[0]" class="searchNothing">
+                  <h3>This category has Nothing!</h3>
                 </div>
               </div>
 
               <div class="more">
                 <router-link to="/Featured" target="a">
-                MORE
-                <i class="el-icon-d-arrow-right"></i>
+                  MORE
+                  <i class="el-icon-d-arrow-right"></i>
                 </router-link>
               </div>
             </div>
@@ -108,15 +74,9 @@
           <!--工厂环境-->
           <div class="wrap-box t-center" style="background: #F7F7F7;">
             <div class="factory_environment t-center" style="background: #F7F7F7;">
-              <el-carousel
-                height="22vw"
-                :interval="2000"
-                arrow="never"
-                indicator-position="none"
-                type="card"
-              >
+              <el-carousel :interval="2000" arrow="never" indicator-position="none" type="card">
                 <el-carousel-item v-for="(item,index) in factoryImg" :key="index">
-                  <img :src="item.img" />
+                  <img :src="item" />
                 </el-carousel-item>
               </el-carousel>
             </div>
@@ -126,42 +86,45 @@
             <div class="top_title">
               <h2>HOT SALE</h2>
             </div>
+            <!-- <router-link to="/Product_detail" > -->
             <div class="flex_hot_waper">
-              <div v-for="item in 10" :key="item" class="item">
+              <div
+                @click="toGdsDetail(item.gdsId)"
+                v-for="item in hotSaleList"
+                :key="item.img"
+                class="item"
+              >
                 <div class="left_box item-container">
                   <div class="item-caption">
                     <div class="item-caption-inner">
                       <div class="item-caption-inner1">
-                        <span>
-                          2006 / 32,000 km / 250 HP / petrol /
-                          automatic / Sports car/Coupe / Beige
-                        </span>
+                        <span>{{item.gdsFeature}}</span>
                       </div>
                     </div>
                   </div>
-                  <img src="../assets/images/car9.jpg" alt />
+                  <img :src="item.img" alt />
                 </div>
                 <div class="right_box">
                   <div>
-                    <div class="title">LAMBORGHINI GALLARDO</div>
-                    <div class="price">$48,400</div>
+                    <div class="price">${{item.price}}</div>
+                    <div class="title">{{item.name}}</div>
                   </div>
-                  <div
+                  <!-- <div
                     class="worlds"
-                  >ABS, Auxiliary heating, Central locking, Cruise control, Electric heated</div>
+                  >{{item.gdsFeature}}</div>-->
                 </div>
               </div>
             </div>
+            <!-- </router-link> -->
             <div class="more">
               <router-link to="/HotSale" target="a">
-              MORE
-              <i class="el-icon-d-arrow-right"></i>
+                MORE
+                <i class="el-icon-d-arrow-right"></i>
               </router-link>
             </div>
           </div>
 
           <div class="wrap-box">
-            <!--Start Box-->
             <div class="zerogrid">
               <div class="header" style="margin-bottom:  50px">
                 <h2>SALES PROMOTION</h2>
@@ -169,20 +132,19 @@
 
               <div class="flex_waper">
                 <div
-                  v-for="(item) in 6"
-                  :key="item"
+                  @click="toGdsDetail(item.gdsId)"
+                  v-for="item in salesList"
+                  :key="item.cateId"
                   class="t-center"
                   style="width:32%;margin-left: 1%;"
                 >
                   <div class="promotion">
                     <div class="promotion_words">
-                      <span>
-                        2006 / 32,000 km / 250 HP / petrol /
-                        automatic / Sports car/Coupe / Beige
-                      </span>
+                      <h3>${{item.price}}</h3>
+                      <div>{{item.name}}</div>
                     </div>
 
-                    <img src="../assets/images/car7.jpg" />
+                    <img :src="item.img" />
                   </div>
                 </div>
               </div>
@@ -209,23 +171,81 @@ export default {
   name: "Home",
   data() {
     return {
-      swiper: [
-        { img: require("../assets/images/slideshow-image1.jpg") },
-        { img: require("../assets/images/slideshow-image2.jpg") },
-        { img: require("../assets/images/slideshow-image3.jpg") }
-      ],
-      factoryImg: [
-        { img: require("../assets/images/fat/f1.png") },
-        { img: require("../assets/images/fat/f2.jpg") },
-        { img: require("../assets/images/fat/f3.png") },
-        { img: require("../assets/images/fat/f4.png") },
-        { img: require("../assets/images/fat/f5.png") },
-        { img: require("../assets/images/fat/f6.png") },
-        { img: require("../assets/images/fat/f7.png") },
-        { img: require("../assets/images/fat/f8.png") }
-      ],
-      preViewFactoryImg: []
+      cateId: "",
+      cascaderList: [],
+      cascProps: {
+        expandTrigger: "hover",
+        value: "cateId",
+        label: "name",
+        children: "children"
+      },
+      featuredList: [],
+      hotSaleList: [],
+      swiper: [],
+      factoryImg: [],
+      salesList: []
     };
+  },
+  methods: {
+    //下啦选择
+    handleChange(e) {
+      // console.log(e);
+      if (e.length < 2) {
+        this.cateId = ''
+         this.getFeatured();
+         return
+      }
+      this.cateId = e[1];
+      
+    },
+    //搜索
+    handleSearch() {
+      if (!this.cateId) return this.$message.error("Please select category!");
+      this.getFeatured();
+    },
+    //去详情页
+    toGdsDetail(id) {
+      this.$router.push({
+        path: "/Product_detail",
+        query: {
+          gdsId: id
+        }
+      });
+    },
+    // 获取首页数据
+    async getHomeList() {
+      const { data } = await this.$http.post("/api/home/list.pub");
+      if (data.code !== "0000") return this.$message.error("请求数据失败");
+      this.swiper = data.data.bannerVOS;
+      this.factoryImg = data.data.cor;
+      this.hotSaleList = data.data.hot;
+      this.salesList = data.data.sales;
+    },
+    //获取分类列表
+    async getCascader() {
+      const { data } = await this.$http.post("/api/home/cate.pub");
+      if (data.code !== "0000") return this.$message.error("请求数据失败");
+      this.cascaderList = data.data;
+      this.cascaderList.forEach(item => {
+        item.children.forEach(i => {
+          delete i.children;
+        });
+      });
+    },
+    //获取FEATURED MATERIAL 数据
+    async getFeatured() {
+      const { data } = await this.$http.post(
+        "/api/home/featured.pub",
+        this.cateId
+      );
+      if (data.code !== "0000") return this.$message.error("请求数据失败");
+      this.featuredList = data.data;
+    }
+  },
+  created() {
+    this.getHomeList();
+    this.getCascader();
+    this.getFeatured();
   }
 };
 </script>
@@ -279,13 +299,23 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   height: 128px;
-  line-height: 128px;
   background-color: rgba(45, 136, 207, 0.3);
   color: #fff;
   font-size: 12px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
 }
+.promotion_words h3 {
+  margin-bottom: 10px;
+}
+/* .promotion_words div {
+  margin-top: 0px;
+} */
 
 .hot_sale {
   min-width: 1300px;
@@ -295,6 +325,7 @@ export default {
 
   margin: 100px 0 50px;
 }
+
 .hot_sale .flex_hot_waper {
   display: flex;
   flex-wrap: wrap;
@@ -436,11 +467,34 @@ Chrome */
 .right_box .price {
   font-size: 24px;
   color: #333;
-  margin-top: 20px;
+  margin-bottom: 30px;
 }
 .right_box .worlds {
   font-size: 14px;
   color: #666;
   padding: 0 20px;
+}
+.searchBox {
+  /* float: right;
+  margin: 20px 50px 30px 0; */
+  padding: 10px 0 40px 0;
+}
+.cascader {
+  width: 400px;
+  margin-right: 10px;
+}
+.el-icon-search {
+  width: 80px;
+  color: #fff;
+  background-color: #da0505;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+}
+.searchNothing {
+  text-align: center;
+  width: 100%;
+  margin: 100px;
+  color: #999;
 }
 </style>

@@ -9,26 +9,17 @@
           <!--Start Box-->
           <div class="zerogrid">
             <div class="header">
-              <h1>FERRARI CALIFORNIA</h1>
+              <h1>{{goodsVO.name}}</h1>
             </div>
             <div class="row">
               <div class="col-2-3">
                 <div class="wrap-col" style="margin-left: 40px">
-                  <el-carousel
-                    height="700px"
-                    :interval="4000"
-                    arrow="hover"
-                    indicator-position="none"
-                  >
-                    <el-carousel-item v-for="(item,index) in swiper" :key="index">
-                      <img :src="item.img" class="swiper_img" alt />
-                    </el-carousel-item>
-                  </el-carousel>
+                  <img :src="goodsVO.img" alt />
                 </div>
               </div>
               <div class="col-1-3">
                 <div class="wrap-col" style="text-align: left; margin-left: 150px">
-                  <p class="price">￥78,340</p>
+                  <p class="price">$ {{goodsVO.price}}</p>
                   <ul class="specs">
                     <li style="margin: 50px 0 20px 0">
                       <strong style="font-size:24px;font-weight: bold;">CATEGORIES</strong>
@@ -36,59 +27,59 @@
                     </li>
                     <li>
                       <strong>Model Number</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.modelNumber}}</span>
                     </li>
                     <li>
                       <strong>Texture</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.texture}}</span>
                     </li>
                     <li>
                       <strong>Thickness</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.thickness}}</span>
                     </li>
                     <li>
                       <strong>Width</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.width}}</span>
                     </li>
                     <li>
                       <strong>Color</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.color}}</span>
                     </li>
                     <li>
                       <strong>Feature</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.feature}}</span>
                     </li>
                     <li>
                       <strong>Backing</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.backing}}</span>
                     </li>
                     <li>
                       <strong>Composition</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.composition}}</span>
                     </li>
                     <li>
                       <strong>Weight</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.weight}}</span>
                     </li>
                     <li>
                       <strong>MOQ</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.moq}}</span>
                     </li>
                     <li>
                       <strong>Use</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.purpose}}</span>
                     </li>
                     <li>
                       <strong>Packing</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.packing}}</span>
                     </li>
                     <li>
                       <strong>Port</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.port}}</span>
                     </li>
                     <li>
                       <strong>Delivery time</strong>
-                      <span>12</span>
+                      <span>{{goodsVO.deliveryTime}}</span>
                     </li>
                   </ul>
                 </div>
@@ -109,8 +100,7 @@
                 <h4>PRODUCT DETAILS</h4>
               </div>
               <div class="product_img">
-                <img src="../assets/images/product-slide1.jpg" alt="">
-                <img src="../assets/images/product-slide2.jpg" alt="">
+                <img v-for="item in detailImgs" :key="item.img" :src="item" alt />
               </div>
             </div>
           </div>
@@ -122,19 +112,19 @@
               <div class="recommen">
                 <!--  -->
                 <div class="recommen_content" :style="'top:'+remcom_top+'px'">
-                  <div v-for="item in 6" :key="item" class="recommen_item">
-                  <img src="../assets/images/product-slide2.jpg" alt="">
-                  <div class="recomment_msk">
-                    $78,400
+                  <div
+                    @click="handleToDetai(item.gdsId)"
+                    v-for="item in goodsVOS"
+                    :key="item.img"
+                    class="recommen_item"
+                  >
+                    <img :src="item.img" alt />
+                    <div class="recomment_msk">$ {{item.price}}</div>
                   </div>
-                </div>
-
-               
-
                 </div>
               </div>
 
-              <div class="arow_icon">
+              <div v-if="goodsVOS.length>5" class="arow_icon">
                 <el-button @click="handleNext" class="el-icon-arrow-down"></el-button>
                 <el-button @click="handleBack" class="el-icon-arrow-up"></el-button>
               </div>
@@ -150,21 +140,42 @@
 export default {
   data() {
     return {
-      swiper: [
-        { img: require("../assets/images/product-slide1.jpg") },
-        { img: require("../assets/images/product-slide2.jpg") },
-        { img: require("../assets/images/slideshow-image3.jpg") }
-      ],
+      gdsId: "",
+      goodsVO: "",
+      detailImgs: "",
+      goodsVOS: "", //推荐商品
       remcom_top: 0
     };
   },
   methods: {
     handleNext() {
-      this.remcom_top -=280
+      let len = this.goodsVOS.length;
+      if (this.remcom_top < (len - 5) * -260) return;
+      this.remcom_top -= 260;
     },
     handleBack() {
-      this.remcom_top +=280
+      if (this.remcom_top == 0) return;
+      this.remcom_top += 260;
+    },
+    handleToDetai(id) {
+      this.gdsId = id;
+      this.detailList();
+      window.scrollTo(0, 0);
+      
+    },
+    //获取关于我们数据
+    async detailList() {
+      const { data } = await this.$http.post("/api/gds/detail.pub", this.gdsId);
+      if (data.code !== "0000") return this.$message.error("请求数据失败");
+      this.goodsVO = data.data.goodsVO;
+      this.detailImgs = data.data.files;
+      this.goodsVOS = data.data.goodsVOS;
     }
+  },
+  created() {
+    // console.log("接收过来的值为：" + this.$route.query.gdsId);
+    this.gdsId = this.$route.query.gdsId;
+    this.detailList();
   }
 };
 </script>
@@ -198,10 +209,12 @@ export default {
 
 .recommen {
   width: 400px;
-  height: 1100px;
+  height: 1040px;
   overflow: hidden;
   display: inline-block;
   position: relative;
+  margin-top: 50px;
+  /* overflow-y:scroll; */
 }
 .recommen_content {
   position: absolute;
@@ -210,9 +223,11 @@ export default {
 }
 .recommen .recommen_item {
   width: 400px;
+  height: 250px;
   overflow: hidden;
   position: relative;
- margin-bottom: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 .recommen .recommen_item img {
   width: 100%;
@@ -225,7 +240,7 @@ export default {
   font-size: 36px;
   font-weight: bold;
   color: #fff;
-  background-color: rgba(45,136,207,.5);
+  background-color: rgba(45, 136, 207, 0.5);
   position: absolute;
   bottom: 0px;
   left: 0;
@@ -238,7 +253,7 @@ export default {
   font-weight: bold;
   cursor: pointer;
 }
-.arow_icon el-button:first-child{
+.arow_icon el-button:first-child {
   margin-right: 70px;
 }
 </style>

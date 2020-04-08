@@ -17,21 +17,28 @@
               <router-link to="/About" >ABOUT</router-link>
             </li>
             <li>
-              <router-link to="/contact">CONTACT</router-link>
+              <router-link :to="{path:'/contact',query:{addressImg:list.addressImg}}">CONTACT</router-link>
             </li>
           </ul>
         </div>
         <div class="logo" style="float:left;margin-left: 40px;">
           
-            <img src="../assets/images/logo.png" style="vertical-align: middle;"/>
+            <img :src="list.logo" style="vertical-align: middle;"/>
           
-          <span style="vertical-align: middle;margin-left:20px;color:#fff;font-size:24px;">名邦贸易</span>
+          <span style="vertical-align: middle;margin-left:20px;color:#fff;font-size:24px;">
+            {{list.abbreviation}}
+            </span>
         </div>
       </div>
    
 </template>
 <script>
-export default {};
+export default {
+  props: ["list"],
+  created() {
+    console.log(this.list)
+  }
+};
 </script>
 
 <style scoped>
