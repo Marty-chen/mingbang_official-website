@@ -125,7 +125,7 @@ export default {
 }
 .hot_sale .flex_hot_waper .item .left_box img {
   width: 100%;
-  height: 16.66vw;
+  height: 20vw;
   min-height: 200px;
 }
 

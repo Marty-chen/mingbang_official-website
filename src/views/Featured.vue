@@ -100,6 +100,7 @@ export default {
 }
 .item img{
   width: 100%;
-  /* height: 300px; */
+  height: 21vw;
+  min-height: 200px;
 }
 </style>

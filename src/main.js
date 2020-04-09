@@ -36,7 +36,6 @@ Vue.use(Pagination)
 Vue.prototype.$message = Message;
 
 axios.defaults.baseURL = 'http://192.168.101.233:11000';
-axios.defaults.withCredentials = true;
 axios.defaults.timeout = 10000;
 
 let headers = {

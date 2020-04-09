@@ -50,7 +50,7 @@
                         </div>
                       </div>
                     </div>
-                    <img :src="item.img"/>
+                    <img :src="item.img" />
                   </div>
                   <div class="item-info">
                     <h5 style="margin-bottom: 10px">${{item.price}}</h5>
@@ -191,12 +191,11 @@ export default {
     handleChange(e) {
       // console.log(e);
       if (e.length < 2) {
-        this.cateId = ''
-         this.getFeatured();
-         return
+        this.cateId = "";
+        this.getFeatured();
+        return;
       }
       this.cateId = e[1];
-      
     },
     //搜索
     handleSearch() {
@@ -266,7 +265,6 @@ export default {
 .flex_waper {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-around; */
 }
 .flex_waper .item {
   width: 32%;
@@ -286,6 +284,7 @@ export default {
 }
 .more a {
   color: #fff;
+  text-decoration: none;
 }
 .factory_environment {
   width: 90%;
@@ -297,7 +296,6 @@ export default {
 }
 .promotion img {
   width: 100%;
-  
 }
 .promotion_words {
   position: absolute;
@@ -317,13 +315,7 @@ export default {
 .promotion_words h3 {
   margin-bottom: 10px;
 }
-/* .promotion_words div {
-  margin-top: 0px;
-} */
 
-.hot_sale {
-  /* min-width: 1000px; */
-}
 .top_title {
   text-align: center;
 
@@ -337,7 +329,6 @@ export default {
 .hot_sale .flex_hot_waper .item {
   width: 47%;
   /* height: 18.75vw; */
-
   margin: 0 0 1.5% 1.5%;
   background-color: #f7f7f7;
 }
@@ -345,8 +336,6 @@ export default {
 .hot_sale .flex_hot_waper .item .left_box {
   display: inline-block;
   width: 65%;
-  /* padding: 20px; */
-
   vertical-align: middle;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -361,7 +350,7 @@ export default {
 }
 .hot_sale .flex_hot_waper .item .left_box img {
   width: 100%;
-  height: 16.66vw;
+  height: 20vw;
   min-height: 200px;
 }
 
