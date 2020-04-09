@@ -42,8 +42,7 @@ axios.defaults.timeout = 10000;
 let headers = {
   platform: "PC",
   version: "1.0.0",
-  timestamp: Date.parse(new Date()),
-  'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+  timestamp: Date.parse(new Date())
 }
 //请求头拦截
 axios.interceptors.request.use(config => {

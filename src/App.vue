@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <Header :list="headerFooterList" />
-    <router-view/>
-    <Footer :list="headerFooterList"/>
+    <router-view />
+    <Footer :list="headerFooterList" />
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "Home",
@@ -18,21 +18,19 @@ export default {
   },
   data() {
     return {
-      headerFooterList: ''
-    }
+      headerFooterList: ""
+    };
   },
-   methods: {
+  methods: {
     //获取顶部和底部数据
-     getHeaderFooter() {
-      this.$http.post("/api/usr/cor/detail.pub").then(data=>{
-       if(data.data.code !== "0000") return this.$message.error("请求数据失败")
-     this.headerFooterList = data.data.data
-     })
-     
+    async getHeaderFooter() {
+      const { data } = await this.$http.post("/api/usr/cor/detail.pub");
+      if (data.code !== "0000") return this.$message.error("请求数据失败");
+      this.headerFooterList = data.data;
     }
   },
   created() {
-    this.getHeaderFooter()
+    this.getHeaderFooter();
   }
 };
 </script>
@@ -41,5 +39,4 @@ export default {
 html::-webkit-scrollbar {
   display: none;
 }
-
 </style>

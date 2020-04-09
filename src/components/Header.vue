@@ -8,7 +8,7 @@
             <li class="products">
               <router-link to="/Featured" >PRODUCTS</router-link>
               <ul class="pro-classify">
-                <li><router-link to="/Featured" target="a">FEATURED MATERIAL</router-link></li>
+                <li><router-link to="/Featured" target="a">PRODUCT LIST</router-link></li>
                 <li><router-link to="/HotSale" target="a">HOT SALE</router-link></li>
                 <li><router-link to="/SalesPromotion" target="a">SALES PROMOTION</router-link></li>
               </ul>

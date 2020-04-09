@@ -85,12 +85,15 @@ export default {
 </script>
 
 <style scoped>
+
 .hot_sale {
-  min-width: 1300px;
+  width: 100%;
+  min-width: 900px;
+  
 }
 .top_title {
   text-align: center;
-  font-size: 48px;
+  font-size: 36px;
   font-weight: bold;
   margin: 100px 0 50px;
 }
@@ -99,19 +102,15 @@ export default {
   flex-wrap: wrap;
 }
 .hot_sale .flex_hot_waper .item {
-  width: 46%;
-  min-width: 600px;
-  /* height: 18.75vw; */
-  min-height: 300px;
-  margin: 0 0 2% 3%;
+  width: 47%;
+  
+  margin: 0 0 1.5% 1.5%;
   background-color: #f7f7f7;
 }
 
 .hot_sale .flex_hot_waper .item .left_box {
   display: inline-block;
   width: 65%;
-  /* padding: 20px; */
-
   vertical-align: middle;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -127,7 +126,7 @@ export default {
 .hot_sale .flex_hot_waper .item .left_box img {
   width: 100%;
   height: 16.66vw;
-  min-height: 300px;
+  min-height: 200px;
 }
 
 .hot_sale .flex_hot_waper .item .item-container .item-caption {
@@ -243,4 +242,8 @@ Chrome */
   color: #666;
   padding: 0 20px;
 }
+/* img{
+  width: 100%;
+  height: 300px;
+} */
 </style>

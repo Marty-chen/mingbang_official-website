@@ -118,6 +118,7 @@ export default {
 }
 .promotion img {
   width: 100%;
+  /* height: 350px; */
 }
 .promotion_words {
   position: absolute;
@@ -137,4 +138,5 @@ export default {
 .promotion_words h3 {
   margin-bottom: 10px;
 }
+
 </style>

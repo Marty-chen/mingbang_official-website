@@ -6,7 +6,7 @@
           <!--Start Box-->
           <div class="zerogrid">
             <div class="header" style="margin:30px 0">
-              <h2>FEATURED MATERIAL</h2>
+              <h2>PRODUCT LIST</h2>
             </div>
 
             <div class="flex_waper">
@@ -52,8 +52,7 @@ export default {
       dataList: [],
       parm: {
         current: 1,
-        size: 9,
-        type: ''
+        size: 9
       },
       total: 0
     };
@@ -79,8 +78,7 @@ export default {
       this.$router.push({
         path: "/Product_detail",
         query: {
-          gdsId: id,
-          tt: Date.parse(new Date())
+          gdsId: id
         }
       });
     }
@@ -99,5 +97,9 @@ export default {
 .flex_waper .item {
   width: 32%;
   margin: 0 0 1% 1%;
+}
+.item img{
+  width: 100%;
+  /* height: 300px; */
 }
 </style>

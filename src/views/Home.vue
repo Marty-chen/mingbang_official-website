@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <el-carousel height="41vw" :interval="4000" arrow="hover" indicator-position="none">
       <el-carousel-item v-for="(item,index) in swiper" :key="index">
         <img :src="item.img" class="swiper_img" alt />
@@ -32,7 +32,7 @@
             <!--Start Box-->
             <div class="zerogrid">
               <div class="header" style="margin:30px 0">
-                <h2>FEATURED MATERIAL</h2>
+                <h2>PRODUCT LIST</h2>
               </div>
 
               <div class="flex_waper">
@@ -50,7 +50,7 @@
                         </div>
                       </div>
                     </div>
-                    <img :src="item.img" />
+                    <img :src="item.img"/>
                   </div>
                   <div class="item-info">
                     <h5 style="margin-bottom: 10px">${{item.price}}</h5>
@@ -102,7 +102,7 @@
                       </div>
                     </div>
                   </div>
-                  <img :src="item.img" alt />
+                  <img :src="item.img" />
                 </div>
                 <div class="right_box">
                   <div>
@@ -251,6 +251,9 @@ export default {
 </script>
 
 <style scoped>
+.home {
+  width: 100%;
+}
 .swiper_img {
   width: 100vw;
   height: 41vw;
@@ -294,6 +297,7 @@ export default {
 }
 .promotion img {
   width: 100%;
+  
 }
 .promotion_words {
   position: absolute;
@@ -318,7 +322,7 @@ export default {
 } */
 
 .hot_sale {
-  min-width: 1300px;
+  /* min-width: 1000px; */
 }
 .top_title {
   text-align: center;
@@ -331,11 +335,10 @@ export default {
   flex-wrap: wrap;
 }
 .hot_sale .flex_hot_waper .item {
-  width: 46%;
-  min-width: 600px;
+  width: 47%;
   /* height: 18.75vw; */
-  min-height: 300px;
-  margin: 0 0 2% 3%;
+
+  margin: 0 0 1.5% 1.5%;
   background-color: #f7f7f7;
 }
 
@@ -359,7 +362,7 @@ export default {
 .hot_sale .flex_hot_waper .item .left_box img {
   width: 100%;
   height: 16.66vw;
-  min-height: 300px;
+  min-height: 200px;
 }
 
 .hot_sale .flex_hot_waper .item .item-container .item-caption {
