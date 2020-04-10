@@ -3,7 +3,7 @@
     <div class="menu">
       <ul>
         <li>
-          <router-link to="/home">HOME</router-link>
+          <router-link to="/">HOME</router-link>
         </li>
         <li class="products">
           <router-link to="/Featured">PRODUCTS</router-link>
